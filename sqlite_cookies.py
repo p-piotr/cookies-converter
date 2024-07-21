@@ -2,6 +2,7 @@ import os
 import sqlite3
 import shutil
 import google_crack
+from os.path import expanduser
 
 def GetCookiesTable(db_file=r'%LocalAppData%\Google\Chrome\User Data\Profile 3\Network\Cookies'):
     db_file = os.path.expandvars(db_file)
@@ -47,9 +48,10 @@ def GetOriginAttributes(top_frame_site_key):
 #print(datetime.datetime.fromtimestamp(GoogleUtcToUnixTimestamp(13330270840195373)).strftime('%Y-%m-%d %H:%M:%S'))
 #google_db_file = os.path.expandvars(r'%LocalAppData%\Google\Chrome\User Data\Profile 3\Network\Cookies')
 google_decrypted_key = google_crack.GetDecryptedKey()
+home = expanduser('~')
 
-firefox_db_template_file = r'C:\Users\piotr\Desktop\cookies.sqlite'
-shutil.copyfile(r'C:\Users\piotr\AppData\Roaming\Mozilla\Firefox\Profiles\jj44l1kp.default-release\cookies.sqlite', 
+firefox_db_template_file = home + '\\cookies.sqlite'
+shutil.copyfile(r'%AppData%\Mozilla\Firefox\Profiles\jj44l1kp.default-release\cookies.sqlite', 
                 firefox_db_template_file)
 
 #create empty firefox template database
