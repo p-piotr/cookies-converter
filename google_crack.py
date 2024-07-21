@@ -7,7 +7,7 @@ from Crypto.Cipher import AES
 def GoogleUtcToUnixTimestamp(google_utc_microseconds, return_microseconds=False):
     google_seconds = int(google_utc_microseconds / 1000000)
     unix_timestamp = google_seconds - 11644480800
-    if (return_microseconds):
+    if return_microseconds:
         unix_timestamp *= 1000000
         unix_timestamp += (google_utc_microseconds % 1000000)
     return unix_timestamp
